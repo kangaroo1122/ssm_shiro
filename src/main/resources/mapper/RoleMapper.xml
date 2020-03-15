@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kangaroohy.ssm_shiro.mapper.RoleMapper">
+    <select id="selectRolesByUserId" parameterType="integer" resultType="com.kangaroohy.ssm_shiro.domain.entity.po.Role">
+        SELECT r.id,r.name,r.description FROM t_role r
+        LEFT JOIN t_user_role ur ON r.id = ur.rid
+        WHERE ur.uid = #{uid}
+    </select>
+</mapper>

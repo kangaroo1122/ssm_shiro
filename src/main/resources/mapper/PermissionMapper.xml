@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kangaroohy.ssm_shiro.mapper.PermissionMapper">
+    <select id="selectPermissionsByRoleId" parameterType="integer" resultType="com.kangaroohy.ssm_shiro.domain.entity.po.Permission">
+        SELECT p.id, p.name, p.url FROM t_permission p
+        LEFT JOIN t_role_permission rp ON rp.pid = p.id
+        WHERE rp.rid = #{rid}
+    </select>
+</mapper>
